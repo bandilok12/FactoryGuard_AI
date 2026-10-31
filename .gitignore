@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+backend/factoryguard.db*
+node_modules/
+*.log

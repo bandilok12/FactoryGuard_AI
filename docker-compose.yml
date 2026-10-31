@@ -1,0 +1,22 @@
+# PostgreSQL deployment: docker compose up --build  ->  http://localhost:8000
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: factoryguard
+      POSTGRES_PASSWORD: factoryguard
+      POSTGRES_DB: factoryguard
+    ports: ["5432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U factoryguard"]
+      interval: 5s
+      retries: 10
+  app:
+    build: .
+    env_file: .env.example
+    environment:
+      DATABASE_URL: postgresql+psycopg2://factoryguard:factoryguard@db:5432/factoryguard
+    ports: ["8000:8000"]
+    depends_on:
+      db:
+        condition: service_healthy
