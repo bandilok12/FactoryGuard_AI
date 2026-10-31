@@ -1,0 +1,46 @@
+{
+  "failure_model": {
+    "algorithm": "RandomForestClassifier(200 trees)",
+    "train_rows": 19200,
+    "test_rows": 4800,
+    "accuracy": 0.9796,
+    "precision": 0.9614,
+    "recall": 0.9234,
+    "f1": 0.942,
+    "roc_auc": 0.9576,
+    "feature_importance": {
+      "tool_wear": 0.2314,
+      "pressure": 0.1904,
+      "vibration": 0.1395,
+      "temp_slope": 0.1053,
+      "temperature": 0.095,
+      "vib_slope": 0.0857,
+      "power_w": 0.0821,
+      "torque": 0.0616,
+      "rpm": 0.009
+    }
+  },
+  "anomaly_model": {
+    "algorithm": "IsolationForest + z-score + machine limit rules",
+    "isolation_forest_false_positive_rate": 0.014,
+    "isolation_forest_detection_rate": 0.2636,
+    "hybrid_false_positive_rate": 0.0165,
+    "hybrid_detection_rate_on_failure_states": 0.6986
+  },
+  "defect_model": {
+    "algorithm": "GradientBoostingClassifier",
+    "train_rows": 12800,
+    "test_rows": 3200,
+    "accuracy": 0.8644,
+    "f1": 0.7382,
+    "roc_auc": 0.9165,
+    "feature_importance": {
+      "seal_temp": 0.5096,
+      "fill_weight_dev": 0.2295,
+      "seal_pressure": 0.0827,
+      "line_speed": 0.0813,
+      "humidity": 0.0781,
+      "vibration": 0.0188
+    }
+  }
+}
